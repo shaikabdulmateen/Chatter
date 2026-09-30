@@ -1,0 +1,76 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+Chatter | Tweet
+{% endblock %}
+
+{% block content %}
+
+<div class="tweet-form-page">
+
+    <!-- Welcome Section -->
+
+    <section class="tweet-welcome">
+
+        <h1>Welcome to Chatter 👋</h1>
+
+        <p>
+            Share your thoughts, connect with people,
+            and join the conversation.
+        </p>
+
+    </section>
+
+
+    <!-- Tweet Form -->
+
+    <div class="tweet-form-card">
+
+        <h2>
+            {% if form.instance.pk %}
+                Edit Tweet
+            {% else %}
+                Create Tweet
+            {% endif %}
+        </h2>
+
+        <p class="form-subtitle">
+            {% if form.instance.pk %}
+                Update your tweet below.
+            {% else %}
+                Share what's on your mind.
+            {% endif %}
+        </p>
+
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="form-actions">
+
+                <button type="submit" class="submit-btn">
+                    {% if form.instance.pk %}
+                        Update Tweet
+                    {% else %}
+                        Submit
+                    {% endif %}
+                </button>
+
+                <a href="{% url 'tweet_list' %}" class="cancel-btn">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

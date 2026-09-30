@@ -1,0 +1,64 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Chatter
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <a href="/">Chatter</a>
+        </div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/tweet/">Tweets</a>
+            <a href="/tweet/create/">Create Tweet</a>
+        </div>
+<div class="nav-right">
+
+    {% if user.is_authenticated %}
+
+        <form method="post" action="{% url 'logout' %}" class="logout">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}">Login</a>
+
+        <a href="{% url 'register' %}" class="signup-btn">
+            Sign Up
+        </a>
+
+    {% endif %}
+
+</div>
+
+    </nav>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
+

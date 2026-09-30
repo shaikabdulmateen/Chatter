@@ -1,0 +1,142 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+Chatter | Home
+{% endblock %}
+
+{% block content %}
+
+<div class="home-page">
+
+    <!-- Hero Section -->
+    <section class="home-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">💬 Welcome to Chatter</span>
+
+            <h1>
+                Your thoughts deserve
+                <span>a place to be heard.</span>
+            </h1>
+
+            <p>
+                Share your ideas, express yourself, discover new conversations,
+                and connect with people on Chatter.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'create_tweet' %}" class="home-btn primary-btn">
+                    ✍️ Create a Tweet
+                </a>
+
+                <a href="{% url 'tweet_list' %}" class="home-btn secondary-btn">
+                    🐦 Explore Tweets
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="floating-icon">💭</div>
+
+            <div class="preview-card">
+
+                <div class="preview-header">
+                    <div class="avatar">C</div>
+
+                    <div>
+                        <strong>Chatter</strong>
+                        <small>@chatter</small>
+                    </div>
+                </div>
+
+                <p>
+                    Great conversations start with a simple thought.
+                    What's on your mind today? 💙
+                </p>
+
+                <div class="preview-actions">
+                    <span>💬</span>
+                    <span>❤️</span>
+                    <span>🔄</span>
+                    <span>🔖</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="home-features">
+
+        <div class="section-heading">
+            <span>WHY CHATTER?</span>
+            <h2>Everything you need to join the conversation.</h2>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+
+                <h3>Share Your Thoughts</h3>
+
+                <p>
+                    Post your thoughts and ideas with the Chatter community.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">🌎</div>
+
+                <h3>Explore Conversations</h3>
+
+                <p>
+                    Discover what other people are talking about and join in.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+
+                <h3>Share Moments</h3>
+
+                <p>
+                    Add images to your tweets and make your posts more engaging.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Bottom CTA -->
+    <section class="home-cta">
+
+        <h2>Ready to start chatting?</h2>
+
+        <p>
+            Share your first thought with the Chatter community.
+        </p>
+
+        <a href="{% url 'create_tweet' %}" class="home-btn primary-btn">
+            Start Chattering 🚀
+        </a>
+
+    </section>
+
+</div>
+
+{% endblock %}
+

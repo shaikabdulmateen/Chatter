@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+Chatter | Logged Out
+{% endblock %}
+
+{% block content %}
+
+<div class="logout-page">
+
+    <div class="logout-card">
+
+        <div class="logout-icon">
+            ✓
+        </div>
+
+        <h2>Logged Out Successfully</h2>
+
+        <p>
+            You have been logged out of your Chatter account.
+        </p>
+
+        <a href="{% url 'login' %}" class="login-again-btn">
+            Login Again
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

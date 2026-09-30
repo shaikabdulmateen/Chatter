@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Chatter | Tweets
+{% endblock %}
+
+{% block content %}
+
+<div class="tweet-page">
+
+
+<!-- Welcome Section -->
+
+<section class="tweet-welcome">
+
+    <h1>Welcome to Chatter 👋</h1>
+
+    <p>
+        Share your thoughts, connect with people,
+        and join the conversation.
+    </p>
+
+
+</section>
+
+
+<!-- Create Tweet Button -->
+
+<div class="create-tweet-top">
+
+    <a href="{% url 'create_tweet' %}" class="create-tweet-btn">
+        + Create Tweet
+    </a>
+
+</div>
+
+
+<!-- Latest Tweets -->
+
+<h1 id="latest-tweets" class="tweets-title">
+    Latest Tweets
+</h1>
+
+
+<div class="tweet-grid">
+
+    {% for tweet in tweets %}
+
+        <div class="tweet-card">
+
+            <div class="tweet-header">
+
+                <div class="user-info">
+
+                    <strong>
+                        {{ tweet.user.username }}
+                    </strong>
+
+                    <span>
+                        @{{ tweet.user.username }}
+                    </span>
+
+                </div>
+
+                <small>
+                    {{ tweet.created_at|date:"M d, Y" }}
+                </small>
+
+            </div>
+
+
+            <div class="tweet-content">
+
+                <p>
+                    {{ tweet.text }}
+                </p>
+
+                {% if tweet.image %}
+
+                    <img
+                        src="{{ tweet.image.url }}"
+                        alt="Tweet image"
+                    >
+
+                {% endif %}
+
+            </div>
+
+
+            {% if tweet.user == request.user %}
+
+                <div class="tweet-actions">
+
+                    <a href="{% url 'edit_tweet' tweet.id %}">
+                        Edit
+                    </a>
+
+                    <a
+                        href="{% url 'delete_tweet' tweet.id %}"
+                        class="delete-btn"
+                    >
+                        Delete
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+    {% empty %}
+
+        <div class="empty-tweets">
+
+            <h2>No tweets yet</h2>
+
+            <p>
+                Be the first one to share something!
+            </p>
+
+            <a
+                href="{% url 'create_tweet' %}"
+                class="create-tweet-btn"
+            >
+                + Create Tweet
+            </a>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+
+</div>
+
+{% endblock %}

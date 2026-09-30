@@ -1,0 +1,2349 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f8fa;
+    color: #14171a;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    min-height: 70px;
+    background: white;
+    border-bottom: 1px solid #e1e8ed;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 60px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    gap: 25px;
+}
+
+
+/* Logo */
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1d9bf0;
+}
+
+
+/* Middle Links */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    flex: 1;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #536471;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #1d9bf0;
+}
+
+
+/* Right Links */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #536471;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.nav-right a:hover {
+    color: #1d9bf0;
+}
+
+
+/* Sign Up */
+
+.signup-btn {
+    background: #1d9bf0;
+    color: white !important;
+
+    padding: 10px 20px;
+    border-radius: 25px;
+
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.signup-btn:hover {
+    background: #0d8de0;
+}
+
+
+/* Logout */
+
+.logout {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn {
+    background: #e0245e;
+    color: white;
+
+    border: none;
+    border-radius: 25px;
+
+    padding: 10px 20px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #c91f52;
+}
+
+
+/* =========================================================
+   TWEET PAGE
+========================================================= */
+
+.tweet-page {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 20px 25px 50px;
+}
+
+
+/* Welcome Section */
+
+.tweet-welcome {
+    text-align: center;
+
+    padding: 25px 20px 30px;
+
+    margin-bottom: 10px;
+}
+
+.tweet-welcome h1 {
+    font-size: 32px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: #14171a;
+}
+
+.tweet-welcome p {
+    max-width: 550px;
+
+    margin: 0 auto 18px;
+
+    color: #536471;
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* Welcome Buttons */
+
+.welcome-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.welcome-buttons a {
+    text-decoration: none;
+
+    padding: 9px 18px;
+
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+/* Create */
+
+.welcome-buttons .primary-btn {
+    background: #1d9bf0;
+    color: white;
+}
+
+.welcome-buttons .primary-btn:hover {
+    background: #0d8de0;
+    transform: translateY(-1px);
+}
+
+
+/* Explore */
+
+.welcome-buttons .secondary-btn {
+    background: white;
+    color: #1d9bf0;
+
+    border: 1px solid #1d9bf0;
+}
+
+.welcome-buttons .secondary-btn:hover {
+    background: #e8f5fd;
+}
+
+
+/* =========================================================
+   CREATE TWEET TOP BUTTON
+========================================================= */
+
+.create-tweet-top {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 18px;
+}
+
+.create-tweet-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1d9bf0;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 9px 17px;
+
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow: 0 3px 10px rgba(29, 155, 240, 0.18);
+
+    transition: 0.2s ease;
+}
+
+.create-tweet-btn:hover {
+    background: #1687d4;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LATEST TWEETS TITLE
+========================================================= */
+
+.tweets-title {
+    font-size: 23px;
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+    color: #0f1419;
+}
+
+
+/* =========================================================
+   TWEET GRID
+========================================================= */
+
+.tweet-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   TWEET CARD
+========================================================= */
+
+.tweet-card {
+    width: 100%;
+    min-width: 0;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 14px;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+    transition: 0.2s ease;
+}
+
+.tweet-card:hover {
+    border-color: #cfd9de;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   TWEET HEADER
+========================================================= */
+
+.tweet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+}
+
+.user-info {
+    position: relative;
+
+    padding-left: 37px;
+
+    min-height: 32px;
+    min-width: 0;
+}
+
+
+/* Avatar */
+
+.user-info::before {
+    content: "👤";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f5fd;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+}
+
+
+/* Username */
+
+.tweet-header strong {
+    display: block;
+
+    color: #0f1419;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 2px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* @Username */
+
+.tweet-header span {
+    color: #536471;
+    font-size: 11px;
+}
+
+
+/* Date */
+
+.tweet-header small {
+    color: #8899a6;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TWEET CONTENT
+========================================================= */
+
+.tweet-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.tweet-content p {
+    color: #14171a;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    margin-bottom: 10px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   TWEET IMAGE
+========================================================= */
+
+.tweet-content img {
+    width: 100%;
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    display: block;
+
+    margin-top: 8px;
+
+    transition: 0.2s ease;
+}
+
+.tweet-card:hover .tweet-content img {
+    transform: scale(1.01);
+}
+
+
+/* =========================================================
+   TWEET ACTIONS
+========================================================= */
+
+.tweet-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 14px;
+    padding-top: 11px;
+
+    border-top: 1px solid #eef1f3;
+
+    flex-shrink: 0;
+}
+
+.tweet-actions a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 12px;
+
+    border-radius: 18px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+/* Edit */
+
+.tweet-actions a:first-child {
+    background: #e8f5fd;
+    color: #1d9bf0;
+}
+
+.tweet-actions a:first-child:hover {
+    background: #d5edfb;
+}
+
+
+/* Delete */
+
+.tweet-actions .delete-btn {
+    background: #fff0f3;
+    color: #e0245e;
+}
+
+.tweet-actions .delete-btn:hover {
+    background: #ffe0e7;
+}
+
+
+/* =========================================================
+   EMPTY TWEETS
+========================================================= */
+
+.empty-tweets {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 14px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.empty-tweets h2 {
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+.empty-tweets p {
+    color: #536471;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   TWEET FORM PAGE
+========================================================= */
+
+.tweet-form-page {
+    width: 100%;
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    padding: 20px 25px 40px;
+}
+
+
+/* Welcome */
+
+.tweet-form-page .tweet-welcome {
+    text-align: center;
+
+    padding: 20px 20px 30px;
+}
+
+.tweet-form-page .tweet-welcome h1 {
+    font-size: 30px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+    color: #14171a;
+}
+
+.tweet-form-page .tweet-welcome p {
+    color: #536471;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.tweet-form-card {
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+
+    padding: 28px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tweet-form-card h2 {
+    font-size: 22px;
+
+    color: #0f1419;
+
+    margin: 0 0 5px;
+}
+
+.form-subtitle {
+    color: #536471;
+
+    font-size: 13px;
+
+    margin: 0 0 22px;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.tweet-form-card form p {
+    margin-bottom: 18px;
+}
+
+.tweet-form-card label {
+    display: block;
+
+    color: #0f1419;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+.tweet-form-card input[type="text"],
+.tweet-form-card input[type="file"],
+.tweet-form-card textarea,
+.tweet-form-card select {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cfd9de;
+    border-radius: 10px;
+
+    background: white;
+
+    color: #14171a;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.tweet-form-card textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+.tweet-form-card input[type="file"] {
+    padding: 9px;
+
+    cursor: pointer;
+}
+
+
+/* Focus */
+
+.tweet-form-card input:focus,
+.tweet-form-card textarea:focus,
+.tweet-form-card select:focus {
+    border-color: #1d9bf0;
+
+    box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.10);
+}
+
+
+/* Help Text */
+
+.tweet-form-card .helptext {
+    display: block;
+
+    color: #8899a6;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+}
+
+
+/* Errors */
+
+.tweet-form-card .errorlist {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 5px 0 7px;
+
+    color: #e0245e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+    padding-top: 18px;
+
+    border-top: 1px solid #eef1f3;
+}
+
+
+/* Submit */
+
+.submit-btn {
+    border: none;
+
+    background: #1d9bf0;
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: #1687d4;
+
+    transform: translateY(-1px);
+}
+
+
+/* Cancel */
+
+.cancel-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f2f2f2;
+    color: #536471;
+
+    padding: 10px 20px;
+
+    border-radius: 22px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background: #e5e5e5;
+}
+
+
+/* =========================================================
+   DELETE PAGE
+========================================================= */
+
+.delete-page {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 60px 20px;
+}
+
+
+/* Delete Card */
+
+.delete-card {
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Delete Icon */
+
+.delete-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    background: #fff0f3;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+
+/* Heading */
+
+.delete-card h1 {
+    margin: 0 0 10px;
+
+    color: #0f1419;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* Description */
+
+.delete-card > p {
+    margin: 0 auto 20px;
+
+    max-width: 420px;
+
+    color: #536471;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* Tweet Preview */
+
+.delete-tweet-preview {
+    background: #f7f9fa;
+
+    border: 1px solid #eef1f3;
+
+    border-radius: 10px;
+
+    padding: 14px 16px;
+
+    margin-bottom: 25px;
+
+    text-align: left;
+}
+
+.delete-tweet-preview p {
+    margin: 0;
+
+    color: #14171a;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+
+/* Delete Actions */
+
+.delete-actions {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* Delete Button */
+
+.delete-btn {
+    border: none;
+
+    background: #e0245e;
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #c91f52;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+
+/* Login Card */
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+
+    padding: 35px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Heading */
+
+.login-card h2 {
+    text-align: center;
+
+    color: #0f1419;
+
+    font-size: 26px;
+
+    margin-bottom: 7px;
+}
+
+.login-subtitle {
+    text-align: center;
+
+    color: #536471;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Form */
+
+.login-card form p {
+    margin-bottom: 18px;
+}
+
+.login-card label {
+    display: block;
+
+    color: #0f1419;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+
+/* Inputs */
+
+.login-card input {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cfd9de;
+    border-radius: 10px;
+
+    background: white;
+
+    color: #14171a;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.login-card input:focus {
+    border-color: #1d9bf0;
+
+    box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.10);
+}
+
+
+/* Login Button */
+
+.login-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #1d9bf0;
+    color: white;
+
+    padding: 11px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #0d8de0;
+
+    transform: translateY(-1px);
+}
+
+
+/* Register Text */
+
+.register-text {
+    text-align: center;
+
+    color: #536471;
+
+    font-size: 13px;
+
+    margin-top: 22px;
+}
+
+.register-text a {
+    color: #1d9bf0;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* Login Errors */
+
+.login-card .errorlist {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 5px 0 8px;
+
+    color: #e0245e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   REGISTER PAGE
+========================================================= */
+
+.register-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+
+/* Register Card */
+
+.register-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+
+    padding: 35px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Heading */
+
+.register-card h2 {
+    text-align: center;
+
+    color: #0f1419;
+
+    font-size: 26px;
+
+    margin-bottom: 7px;
+}
+
+.register-subtitle {
+    text-align: center;
+
+    color: #536471;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* Form */
+
+.register-card form p {
+    margin-bottom: 17px;
+}
+
+.register-card label {
+    display: block;
+
+    color: #0f1419;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+
+/* Inputs */
+
+.register-card input {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cfd9de;
+    border-radius: 10px;
+
+    background: white;
+
+    color: #14171a;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.register-card input:focus {
+    border-color: #1d9bf0;
+
+    box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.10);
+}
+
+
+/* Help Text */
+
+.register-card .helptext {
+    display: block;
+
+    color: #8899a6;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    margin-top: 5px;
+}
+
+
+/* Register Button */
+
+.register-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #1d9bf0;
+    color: white;
+
+    padding: 11px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.register-btn:hover {
+    background: #0d8de0;
+
+    transform: translateY(-1px);
+}
+
+
+/* Login Text */
+
+.login-text {
+    text-align: center;
+
+    color: #536471;
+
+    font-size: 13px;
+
+    margin-top: 22px;
+}
+
+.login-text a {
+    color: #1d9bf0;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* Register Errors */
+
+.register-card .errorlist {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 5px 0 8px;
+
+    color: #e0245e;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-page {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 40px 25px 70px;
+}
+
+
+/* Hero */
+
+.home-hero {
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 70px;
+
+    padding: 50px 20px;
+}
+
+.hero-content {
+    max-width: 620px;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    border-radius: 30px;
+
+    background: #eef4ff;
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 22px;
+}
+
+.hero-content h1 {
+    font-size: 58px;
+
+    line-height: 1.08;
+
+    margin: 0 0 22px;
+
+    color: #111827;
+
+    letter-spacing: -2px;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    color: #2563eb;
+}
+
+.hero-content p {
+    max-width: 560px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #6b7280;
+
+    margin-bottom: 32px;
+}
+
+
+/* Hero Buttons */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+.home-btn {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+.primary-btn {
+    background: #2563eb;
+    color: white;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
+}
+
+.primary-btn:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: white;
+
+    color: #1f2937;
+
+    border: 1px solid #dbe1ea;
+}
+
+.secondary-btn:hover {
+    background: #f8fafc;
+
+    transform: translateY(-2px);
+}
+
+
+/* Hero Preview */
+
+.hero-card {
+    position: relative;
+
+    width: 390px;
+
+    flex-shrink: 0;
+}
+
+.preview-card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+
+    transform: rotate(2deg);
+}
+
+.preview-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    font-size: 18px;
+}
+
+.preview-header strong {
+    display: block;
+
+    color: #111827;
+
+    font-size: 15px;
+}
+
+.preview-header small {
+    display: block;
+
+    color: #9ca3af;
+
+    margin-top: 3px;
+}
+
+.preview-card p {
+    color: #374151;
+
+    line-height: 1.7;
+
+    font-size: 16px;
+
+    margin-bottom: 25px;
+}
+
+.preview-actions {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #9ca3af;
+
+    font-size: 18px;
+
+    border-top: 1px solid #f0f0f0;
+
+    padding-top: 18px;
+}
+
+.floating-icon {
+    position: absolute;
+
+    right: -18px;
+    top: -28px;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 18px;
+
+    background: #2563eb;
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HOME FEATURES
+========================================================= */
+
+.home-features {
+    padding: 70px 20px;
+}
+
+.section-heading {
+    text-align: center;
+
+    max-width: 650px;
+
+    margin: 0 auto 40px;
+}
+
+.section-heading span {
+    color: #2563eb;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    color: #111827;
+
+    font-size: 34px;
+
+    line-height: 1.25;
+
+    margin-top: 12px;
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.feature-card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    transition: 0.25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eef4ff;
+
+    border-radius: 14px;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    color: #111827;
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+}
+
+.feature-card p {
+    color: #6b7280;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   HOME CTA
+========================================================= */
+
+.home-cta {
+    text-align: center;
+
+    background: #f5f8ff;
+
+    border: 1px solid #e0e8ff;
+
+    border-radius: 22px;
+
+    padding: 55px 25px;
+
+    margin: 30px 20px 0;
+}
+
+.home-cta h2 {
+    color: #111827;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.home-cta p {
+    color: #6b7280;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   LOGOUT PAGE
+========================================================= */
+
+.logout-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+.logout-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    border: 1px solid #e1e8ed;
+
+    border-radius: 16px;
+
+    padding: 40px 35px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Logout Icon */
+
+.logout-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    background: #e8f5fd;
+
+    color: #1d9bf0;
+
+    border-radius: 50%;
+
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+/* Heading */
+
+.logout-card h2 {
+    color: #0f1419;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Message */
+
+.logout-card p {
+    color: #536471;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* Login Again */
+
+.login-again-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #1d9bf0;
+
+    color: white;
+
+    padding: 11px 25px;
+
+    border-radius: 25px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.login-again-btn:hover {
+    background: #0d8de0;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LARGE TABLETS
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .nav-links {
+        gap: 22px;
+    }
+
+    .tweet-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .home-hero {
+        gap: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 50px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (max-width: 850px) {
+
+    /* Navbar */
+
+    .navbar {
+        padding: 12px 25px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+    }
+
+    .nav-links {
+        order: 3;
+
+        width: 100%;
+
+        flex: none;
+
+        gap: 20px;
+
+        overflow-x: auto;
+
+        padding: 4px 0;
+
+        justify-content: center;
+    }
+
+    .nav-right {
+        gap: 12px;
+    }
+
+
+    /* Tweet */
+
+    .tweet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* Home */
+
+    .home-hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding-top: 30px;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-card {
+        width: 100%;
+
+        max-width: 390px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Navbar */
+
+    .navbar {
+        min-height: auto;
+
+        padding: 12px 15px;
+
+        gap: 12px;
+    }
+
+    .logo a {
+        font-size: 25px;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+
+        gap: 18px;
+
+        width: 100%;
+
+        padding-bottom: 3px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .nav-right {
+        gap: 10px;
+    }
+
+    .nav-right a {
+        font-size: 14px;
+    }
+
+    .signup-btn,
+    .logout-btn {
+        padding: 8px 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* Tweet Page */
+
+    .tweet-page {
+        padding: 15px;
+    }
+
+    .tweet-welcome {
+        padding: 20px 10px 25px;
+    }
+
+    .tweet-welcome h1 {
+        font-size: 27px;
+    }
+
+    .tweet-welcome p {
+        font-size: 14px;
+    }
+
+    .tweet-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .tweet-card {
+        padding: 14px;
+    }
+
+    .tweet-content img {
+        height: 180px;
+    }
+
+    .create-tweet-top {
+        justify-content: center;
+    }
+
+    .create-tweet-btn {
+        width: 100%;
+    }
+
+
+    /* Tweet Form */
+
+    .tweet-form-page {
+        padding: 15px;
+    }
+
+    .tweet-form-page .tweet-welcome {
+        padding: 20px 10px 25px;
+    }
+
+    .tweet-form-page .tweet-welcome h1 {
+        font-size: 26px;
+    }
+
+    .tweet-form-card {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .submit-btn,
+    .cancel-btn {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+
+    /* Delete */
+
+    .delete-page {
+        padding: 35px 15px;
+    }
+
+    .delete-card {
+        padding: 25px 20px;
+    }
+
+    .delete-card h1 {
+        font-size: 22px;
+    }
+
+    .delete-actions {
+        flex-direction: column;
+    }
+
+    .delete-btn,
+    .delete-actions .cancel-btn {
+        width: 100%;
+    }
+
+
+    /* Login */
+
+    .login-page {
+        padding: 25px 15px;
+    }
+
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .login-card h2 {
+        font-size: 23px;
+    }
+
+
+    /* Register */
+
+    .register-page {
+        padding: 25px 15px;
+    }
+
+    .register-card {
+        padding: 25px 20px;
+    }
+
+    .register-card h2 {
+        font-size: 23px;
+    }
+
+
+    /* Home */
+
+    .home-page {
+        padding: 20px 12px 50px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .home-btn {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .hero-card {
+        max-width: 350px;
+    }
+
+    .preview-card {
+        padding: 20px;
+    }
+
+    .floating-icon {
+        right: -5px;
+        top: -20px;
+
+        width: 55px;
+        height: 55px;
+
+        font-size: 24px;
+    }
+
+    .home-features {
+        padding: 50px 10px;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .feature-card {
+        padding: 24px;
+    }
+
+    .home-cta {
+        margin: 20px 0 0;
+
+        padding: 40px 20px;
+    }
+
+    .home-cta h2 {
+        font-size: 27px;
+    }
+
+
+    /* Logout */
+
+    .logout-page {
+        padding: 25px 15px;
+    }
+
+    .logout-card {
+        padding: 30px 20px;
+    }
+
+    .logout-card h2 {
+        font-size: 22px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .navbar {
+        padding: 10px 10px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .nav-right {
+        gap: 7px;
+    }
+
+    .nav-right a {
+        font-size: 13px;
+    }
+
+    .signup-btn,
+    .logout-btn {
+        padding: 7px 11px;
+
+        font-size: 12px;
+    }
+
+
+    /* Tweet */
+
+    .tweet-welcome h1 {
+        font-size: 24px;
+    }
+
+    .tweets-title {
+        font-size: 21px;
+    }
+
+    .tweet-card {
+        padding: 12px;
+    }
+
+    .tweet-content img {
+        height: 160px;
+    }
+
+    .tweet-actions {
+        gap: 5px;
+    }
+
+    .tweet-actions a {
+        padding: 6px 10px;
+    }
+
+
+    /* Home */
+
+    .hero-content h1 {
+        font-size: 31px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-card {
+        max-width: 310px;
+    }
+
+    .preview-card {
+        padding: 17px;
+    }
+
+    .preview-card p {
+        font-size: 14px;
+    }
+
+
+    /* Forms */
+
+    .tweet-form-card,
+    .login-card,
+    .register-card {
+        padding: 20px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 320px) {
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .nav-right {
+        gap: 5px;
+    }
+
+    .signup-btn,
+    .logout-btn {
+        padding: 6px 9px;
+
+        font-size: 11px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .tweet-actions a {
+        padding: 5px 8px;
+
+        font-size: 10px;
+    }
+
+}
