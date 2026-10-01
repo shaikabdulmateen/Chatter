@@ -15,6 +15,7 @@ def tweet_list(request):
     tweets = Tweet.objects.all().order_by('-created_at')
     return render(request, 'tweet_list.html', {'tweets': tweets})
 
+@login_required()
 def create_tweet(request):
     if request.method == 'POST':
         form = TweetForm(request.POST, request.FILES)
@@ -48,11 +49,17 @@ def edit_tweet(request, tweet_id):
 
 @login_required
 def delete_tweet(request, tweet_id):
-    tweet = get_object_or_404(Tweet, pk=tweet_id , user = request.user)
+    tweet = get_object_or_404(Tweet, pk=tweet_id, user=request.user)
+
     if request.method == 'POST':
+        if tweet.image:
+            tweet.image.delete(save=False)
+
         tweet.delete()
         return redirect('tweet_list')
+
     return render(request, 'tweet_confirm_delete.html', {'tweet': tweet})
+
 
 
 def register(request):
