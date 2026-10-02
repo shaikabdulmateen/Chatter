@@ -1,0 +1,320 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Chatter | Tweet
+{% endblock %}
+
+{% block content %}
+
+<div class="tweet-detail-page">
+
+    <div class="tweet-detail-card">
+
+        <!-- User Info -->
+
+        <div class="tweet-detail-header">
+
+            <div class="tweet-detail-user">
+
+                <strong>
+                    @{{ tweet.user.username }}
+                </strong>
+
+                <span>
+                    {{ tweet.created_at|date:"M d, Y • h:i A" }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Full Tweet -->
+
+        <div class="tweet-detail-content">
+
+            <p>
+                {{ tweet.text }}
+            </p>
+
+            {% if tweet.image %}
+
+                <img
+                    src="{{ tweet.image.url }}"
+                    alt="Tweet image"
+                    class="tweet-detail-image"
+                >
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Like -->
+
+        <div class="tweet-detail-social">
+
+            <form
+                method="post"
+                action="{% url 'like_tweet' tweet.id %}"
+            >
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="detail-like-btn"
+                >
+                    {% if liked %}
+                        ❤️
+                    {% else %}
+                        🤍
+                    {% endif %}
+                </button>
+
+                <span>
+                    {{ tweet.likes.count }}
+                </span>
+
+            </form>
+
+            <span>
+                💬 {{ tweet.comments.count }}
+            </span>
+
+        </div>
+
+
+        <!-- Tweet Owner Actions -->
+
+        {% if tweet.user == request.user %}
+
+            <div class="tweet-detail-actions">
+
+                <a href="{% url 'edit_tweet' tweet.id %}">
+                    Edit
+                </a>
+
+                <a
+                    href="{% url 'delete_tweet' tweet.id %}"
+                    class="detail-delete-btn"
+                >
+                    Delete
+                </a>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- Comments -->
+
+        <div class="tweet-detail-comments">
+
+            <h3>
+                Comments
+            </h3>
+
+
+            <!-- Add Comment -->
+
+            <form
+                method="post"
+                action="{% url 'add_comment' tweet.id %}"
+                class="detail-comment-form"
+            >
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="text"
+                    placeholder="Write a comment..."
+                    maxlength="300"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="detail-comment-submit-btn"
+                >
+                    Comment
+                </button>
+
+            </form>
+
+
+            <!-- Comments List -->
+
+            <div class="detail-comments-list">
+
+                {% for comment in tweet.comments.all %}
+
+                    <div class="detail-comment">
+
+                        <div
+                            class="detail-comment-content"
+                            id="detail-comment-content-{{ comment.id }}"
+                        >
+
+                            <strong>
+                                @{{ comment.user.username }}
+                            </strong>
+
+                            <span>
+                                {{ comment.text }}
+                            </span>
+
+                        </div>
+
+
+                        {% if comment.user == request.user %}
+
+                            <!-- Edit / Delete -->
+
+                            <div
+                                class="detail-comment-actions"
+                                id="detail-comment-actions-{{ comment.id }}"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="detail-comment-edit-btn"
+                                    onclick="openDetailCommentEdit({{ comment.id }})"
+                                >
+                                    Edit
+                                </button>
+
+
+                                <form
+                                    method="post"
+                                    action="{% url 'delete_comment' comment.id %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                        type="submit"
+                                        class="detail-comment-delete-btn"
+                                    >
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+
+                            <!-- Edit Comment -->
+
+                            <form
+                                method="post"
+                                action="{% url 'edit_comment' comment.id %}"
+                                class="detail-comment-edit-form"
+                                id="detail-edit-comment-{{ comment.id }}"
+                                style="display: none;"
+                            >
+
+                                {% csrf_token %}
+
+                                <input
+                                    type="text"
+                                    name="text"
+                                    value="{{ comment.text }}"
+                                    maxlength="300"
+                                    required
+                                    class="detail-comment-edit-input"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="detail-comment-save-btn"
+                                >
+                                    Save
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="detail-comment-cancel-btn"
+                                    onclick="closeDetailCommentEdit({{ comment.id }})"
+                                >
+                                    Cancel
+                                </button>
+
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+
+                {% empty %}
+
+                    <p class="detail-no-comments">
+                        No comments yet.
+                    </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Back -->
+
+        <a
+            href="{% url 'tweet_list' %}"
+            class="back-to-tweets"
+        >
+            ← Back to Tweets
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openDetailCommentEdit(commentId) {
+
+    const content = document.getElementById(
+        "detail-comment-content-" + commentId
+    );
+
+    const actions = document.getElementById(
+        "detail-comment-actions-" + commentId
+    );
+
+    const editForm = document.getElementById(
+        "detail-edit-comment-" + commentId
+    );
+
+    content.style.display = "none";
+    actions.style.display = "none";
+    editForm.style.display = "flex";
+
+}
+
+
+function closeDetailCommentEdit(commentId) {
+
+    const content = document.getElementById(
+        "detail-comment-content-" + commentId
+    );
+
+    const actions = document.getElementById(
+        "detail-comment-actions-" + commentId
+    );
+
+    const editForm = document.getElementById(
+        "detail-edit-comment-" + commentId
+    );
+
+    content.style.display = "block";
+    actions.style.display = "flex";
+    editForm.style.display = "none";
+
+}
+
+</script>
+
+{% endblock %}

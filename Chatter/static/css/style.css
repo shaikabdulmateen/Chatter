@@ -1,3 +1,4 @@
+
 /* =========================================================
    GLOBAL RESET
 ========================================================= */
@@ -500,17 +501,17 @@ select {
 
 
 /* =========================================================
-   TWEET ACTIONS
+   TWEET OWNER ACTIONS
 ========================================================= */
 
 .tweet-actions {
     display: flex;
     align-items: center;
 
-    gap: 7px;
+    gap: 6px;
 
-    margin-top: 14px;
-    padding-top: 11px;
+    margin-top: 12px;
+    padding-top: 9px;
 
     border-top: 1px solid #eef1f3;
 
@@ -523,14 +524,17 @@ select {
     align-items: center;
     justify-content: center;
 
-    padding: 6px 12px;
+    padding: 4px 8px;
+    min-height: 26px;
 
-    border-radius: 18px;
+    border-radius: 14px;
 
     text-decoration: none;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
+
+    line-height: 1;
 
     transition: 0.2s ease;
 }
@@ -553,10 +557,179 @@ select {
 .tweet-actions .delete-btn {
     background: #fff0f3;
     color: #e0245e;
+
+    padding: 4px 8px;
+    min-height: 26px;
+
+    font-size: 10px;
 }
 
 .tweet-actions .delete-btn:hover {
     background: #ffe0e7;
+}
+
+
+/* =========================================================
+   LIKE & COMMENTS
+========================================================= */
+
+.tweet-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 12px;
+    padding-top: 10px;
+
+    border-top: 1px solid #eef1f3;
+}
+
+.tweet-social form {
+    margin: 0;
+}
+
+.like-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #536471;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.like-btn:hover {
+    background: #fff0f3;
+
+    transform: scale(1.12);
+}
+
+.like-count {
+    color: #536471;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* Comments */
+
+.tweet-comments {
+    margin-top: 12px;
+}
+
+.tweet-comments form {
+    display: flex;
+    gap: 7px;
+}
+
+.tweet-comments input {
+    min-width: 0;
+    flex: 1;
+
+    padding: 7px 10px;
+
+    border: 1px solid #cfd9de;
+    border-radius: 18px;
+
+    background: white;
+
+    color: #14171a;
+
+    font-size: 11px;
+
+    outline: none;
+}
+
+.tweet-comments input:focus {
+    border-color: #1d9bf0;
+
+    box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.10);
+}
+
+
+/* =========================================================
+   COMMENT SUBMIT BUTTON
+========================================================= */
+
+.comment-submit-btn {
+    border: none;
+
+    background: #1d9bf0;
+    color: white;
+
+    padding: 7px 11px;
+
+    border-radius: 18px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+.comment-submit-btn:hover {
+    background: #1687d4;
+}
+
+
+/* Comment List */
+
+.comments-list {
+    margin-top: 10px;
+}
+
+.comment {
+    padding: 7px 9px;
+
+    margin-bottom: 6px;
+
+    background: #f7f9fa;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    word-break: break-word;
+}
+
+.comment strong {
+    color: #1d9bf0;
+
+    margin-right: 5px;
+}
+
+.comment span {
+    color: #14171a;
+}
+
+.no-comments {
+    color: #8899a6;
+
+    font-size: 11px;
+
+    margin: 7px 0;
 }
 
 
@@ -1158,6 +1331,7 @@ select {
     min-height: calc(100vh - 70px);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1867,8 +2041,6 @@ select {
 
 @media (max-width: 850px) {
 
-    /* Navbar */
-
     .navbar {
         padding: 12px 25px;
 
@@ -1906,14 +2078,10 @@ select {
     }
 
 
-    /* Tweet */
-
     .tweet-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-
-    /* Home */
 
     .home-hero {
         flex-direction: column;
@@ -1958,8 +2126,6 @@ select {
 ========================================================= */
 
 @media (max-width: 600px) {
-
-    /* Navbar */
 
     .navbar {
         min-height: auto;
@@ -2268,12 +2434,25 @@ select {
         height: 160px;
     }
 
+
+    /* Tweet Owner Actions */
+
     .tweet-actions {
         gap: 5px;
+
+        margin-top: 10px;
+        padding-top: 8px;
     }
 
-    .tweet-actions a {
-        padding: 6px 10px;
+    .tweet-actions a,
+    .tweet-actions .delete-btn {
+        padding: 4px 7px;
+
+        min-height: 24px;
+
+        font-size: 9px;
+
+        border-radius: 13px;
     }
 
 
@@ -2336,14 +2515,864 @@ select {
         font-size: 11px;
     }
 
+
+    /* Tweet Owner Actions */
+
+    .tweet-actions a,
+    .tweet-actions .delete-btn {
+        padding: 4px 6px;
+
+        min-height: 23px;
+
+        font-size: 9px;
+    }
+
     .hero-content h1 {
         font-size: 28px;
     }
 
-    .tweet-actions a {
-        padding: 5px 8px;
+}
+
+
+/* =========================================================
+   LIKE & COMMENTS RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .tweet-social {
+        gap: 8px;
+
+        margin-top: 10px;
+        padding-top: 9px;
+    }
+
+    .like-count {
+        font-size: 11px;
+    }
+
+    .tweet-comments {
+        margin-top: 10px;
+    }
+
+    .tweet-comments form {
+        gap: 6px;
+    }
+
+    .tweet-comments input {
+        padding: 8px 10px;
+
+        font-size: 11px;
+    }
+
+
+    /* Only Comment Submit Button */
+
+    .comment-submit-btn {
+        padding: 8px 10px;
+
+        font-size: 11px;
+    }
+
+    .comment {
+        padding: 8px 9px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .tweet-social {
+        gap: 7px;
+    }
+
+    .like-count {
+        font-size: 10px;
+    }
+
+    .tweet-comments input {
+        padding: 7px 9px;
 
         font-size: 10px;
     }
 
+
+    /* Only Comment Submit Button */
+
+    .comment-submit-btn {
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+
+    .comment {
+        padding: 7px 8px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+@media (max-width: 320px) {
+
+    .tweet-comments form {
+        flex-direction: column;
+    }
+
+    .tweet-comments input {
+        width: 100%;
+    }
+
+
+    /* Only Comment Submit Button */
+
+    .comment-submit-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   COMMENT ACTIONS
+========================================================= */
+
+.comment-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 4px;
+}
+
+
+/* Edit & Delete */
+
+.comment-actions .comment-edit-trigger,
+.comment-actions .comment-delete-btn {
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    margin: 0;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    cursor: pointer;
+
+    width: auto;
+    height: auto;
+
+    min-width: 0;
+    min-height: 0;
+
+    border-radius: 0;
+
+    transition: 0.2s ease;
+}
+
+
+/* Edit */
+
+.comment-actions .comment-edit-trigger {
+    color: #1d9bf0;
+}
+
+.comment-actions .comment-edit-trigger:hover {
+    text-decoration: underline;
+}
+
+
+/* Delete Form */
+
+.comment-delete-form {
+    margin: 0;
+    padding: 0;
+
+    display: inline;
+}
+
+
+/* Delete */
+
+.comment-actions .comment-delete-btn {
+    color: #e0245e;
+}
+
+.comment-actions .comment-delete-btn:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   COMMENT EDIT FORM
+========================================================= */
+
+.comment-edit-form {
+    display: none;
+
+    align-items: center;
+
+    gap: 5px;
+
+    width: 100%;
+
+    margin-top: 5px;
+}
+
+.comment-edit-input {
+    flex: 1;
+
+    min-width: 0;
+
+    width: auto;
+
+    padding: 5px 8px;
+
+    border: 1px solid #cfd9de;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #14171a;
+
+    font-size: 10px;
+
+    outline: none;
+}
+
+.comment-edit-input:focus {
+    border-color: #1d9bf0;
+
+    box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.08);
+}
+
+
+/* Save & Cancel */
+
+.comment-save-btn,
+.comment-cancel-btn {
+    border: none;
+
+    padding: 5px 8px;
+
+    border-radius: 11px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+
+/* Save */
+
+.comment-save-btn {
+    background: #1d9bf0;
+
+    color: white;
+}
+
+.comment-save-btn:hover {
+    background: #1687d4;
+}
+
+
+/* Cancel */
+
+.comment-cancel-btn {
+    background: #e1e8ed;
+
+    color: #536471;
+}
+
+.comment-cancel-btn:hover {
+    background: #cfd9de;
+}
+
+
+/* =========================================================
+   COMMENT ACTIONS — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .comment-actions {
+        gap: 5px;
+
+        margin-top: 4px;
+    }
+
+    .comment-actions .comment-edit-trigger,
+    .comment-actions .comment-delete-btn {
+        padding: 0;
+
+        font-size: 9px;
+
+        line-height: 1.2;
+    }
+
+    .comment-edit-form {
+        gap: 5px;
+
+        margin-top: 5px;
+    }
+
+    .comment-edit-input {
+        padding: 5px 7px;
+
+        font-size: 10px;
+    }
+
+    .comment-save-btn,
+    .comment-cancel-btn {
+        padding: 5px 7px;
+
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   COMMENT ACTIONS — SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .comment-actions {
+        gap: 4px;
+
+        margin-top: 3px;
+    }
+
+    .comment-actions .comment-edit-trigger,
+    .comment-actions .comment-delete-btn {
+        font-size: 8px;
+    }
+
+    .comment-edit-form {
+        gap: 4px;
+
+        margin-top: 4px;
+    }
+
+    .comment-edit-input {
+        padding: 4px 6px;
+
+        font-size: 9px;
+    }
+
+    .comment-save-btn,
+    .comment-cancel-btn {
+        padding: 4px 6px;
+
+        font-size: 8px;
+
+        border-radius: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   COMMENT ACTIONS — VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 320px) {
+
+    .comment-actions {
+        gap: 3px;
+    }
+
+    .comment-actions .comment-edit-trigger,
+    .comment-actions .comment-delete-btn {
+        font-size: 8px;
+    }
+
+    .comment-edit-form {
+        flex-wrap: wrap;
+    }
+
+    .comment-edit-input {
+        width: 100%;
+
+        flex-basis: 100%;
+    }
+
+    .comment-save-btn,
+    .comment-cancel-btn {
+        padding: 4px 6px;
+
+        font-size: 8px;
+    }
+
+}
+
+
+
+/* ============================= */
+/* Tweet Detail Page */
+/* ============================= */
+
+.tweet-detail-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.tweet-detail-link .tweet-content {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tweet-detail-link:hover .tweet-content {
+    opacity: 0.92;
+}
+
+
+/* Detail Page */
+
+.tweet-detail-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.tweet-detail-card {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+
+.tweet-detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+.tweet-detail-user {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tweet-detail-user strong {
+    font-size: 17px;
+    color: #14171a;
+}
+
+.tweet-detail-user span {
+    font-size: 12px;
+    color: #657786;
+}
+
+
+/* Full Tweet */
+
+.tweet-detail-content p {
+    margin: 0 0 25px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #14171a;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+.tweet-detail-image {
+    display: block;
+    width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #f5f8fa;
+}
+
+
+/* Stats */
+
+.tweet-detail-stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #eef1f3;
+    color: #536471;
+    font-size: 14px;
+}
+
+
+/* Back Button */
+
+.back-to-tweets {
+    display: inline-flex;
+    margin-top: 25px;
+    padding: 9px 16px;
+    border-radius: 20px;
+    background: #e8f5fd;
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.back-to-tweets:hover {
+    background: #d5edfb;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .tweet-detail-page {
+        padding: 25px 12px;
+    }
+
+    .tweet-detail-card {
+        padding: 20px;
+        border-radius: 13px;
+    }
+
+    .tweet-detail-content p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .tweet-detail-image {
+        max-height: 500px;
+        border-radius: 10px;
+    }
+
+    .tweet-detail-stats {
+        gap: 15px;
+        font-size: 12px;
+        flex-wrap: wrap;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .tweet-detail-page {
+        padding: 20px 8px;
+    }
+
+    .tweet-detail-card {
+        padding: 16px;
+    }
+
+    .tweet-detail-content p {
+        font-size: 16px;
+    }
+
+    .tweet-detail-user strong {
+        font-size: 15px;
+    }
+
+    .tweet-detail-stats {
+        font-size: 11px;
+    }
+
+}
+
+
+
+/* ============================= */
+/* Tweet Detail Interactions */
+/* ============================= */
+
+.tweet-detail-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 22px;
+    padding-top: 15px;
+    border-top: 1px solid #eef1f3;
+    color: #536471;
+    font-size: 13px;
+}
+
+.tweet-detail-social form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.detail-like-btn {
+    border: none;
+    background: transparent;
+    padding: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+/* Tweet Edit / Delete */
+
+.tweet-detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.tweet-detail-actions a {
+    padding: 7px 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.tweet-detail-actions a:first-child {
+    background: #e8f5fd;
+    color: #1d9bf0;
+}
+
+.detail-delete-btn {
+    background: #fff0f3;
+    color: #e0245e;
+}
+
+
+/* Comments */
+
+.tweet-detail-comments {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eef1f3;
+}
+
+.tweet-detail-comments h3 {
+    margin: 0 0 15px;
+    font-size: 16px;
+    color: #14171a;
+}
+
+.detail-comment-form {
+    display: flex;
+    gap: 7px;
+    width: 100%;
+}
+
+.detail-comment-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 11px;
+    border: 1px solid #cfd9de;
+    border-radius: 18px;
+    outline: none;
+    font-size: 11px;
+}
+
+.detail-comment-form input:focus {
+    border-color: #1d9bf0;
+}
+
+.detail-comment-submit-btn {
+    border: none;
+    background: #1d9bf0;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.detail-comment-submit-btn:hover {
+    background: #1687d4;
+}
+
+
+/* Comment List */
+
+.detail-comments-list {
+    margin-top: 18px;
+}
+
+.detail-comment {
+    padding: 10px 0;
+    border-bottom: 1px solid #eef1f3;
+}
+
+.detail-comment-content {
+    display: flex;
+    gap: 7px;
+    align-items: flex-start;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.detail-comment-content strong {
+    color: #14171a;
+    white-space: nowrap;
+}
+
+.detail-comment-content span {
+    color: #536471;
+    overflow-wrap: anywhere;
+}
+
+
+/* Comment Edit / Delete */
+
+.detail-comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 5px;
+}
+
+.detail-comment-actions form {
+    margin: 0;
+}
+
+.detail-comment-edit-btn,
+.detail-comment-delete-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+.detail-comment-edit-btn {
+    color: #1d9bf0;
+}
+
+.detail-comment-delete-btn {
+    color: #e0245e;
+}
+
+.detail-comment-edit-btn:hover,
+.detail-comment-delete-btn:hover {
+    text-decoration: underline;
+}
+
+
+/* Comment Edit Form */
+
+.detail-comment-edit-form {
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.detail-comment-edit-input {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 8px;
+    border: 1px solid #cfd9de;
+    border-radius: 12px;
+    outline: none;
+    font-size: 10px;
+}
+
+.detail-comment-save-btn,
+.detail-comment-cancel-btn {
+    border: none;
+    padding: 5px 8px;
+    border-radius: 11px;
+    font-size: 9px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.detail-comment-save-btn {
+    background: #1d9bf0;
+    color: white;
+}
+
+.detail-comment-cancel-btn {
+    background: #e1e8ed;
+    color: #536471;
+}
+
+.detail-no-comments {
+    color: #657786;
+    font-size: 11px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .detail-comment-form {
+        gap: 5px;
+    }
+
+    .detail-comment-submit-btn {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .tweet-detail-actions {
+        gap: 6px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .detail-comment-form {
+        flex-wrap: wrap;
+    }
+
+    .detail-comment-form input {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .detail-comment-submit-btn {
+        width: 100%;
+    }
+
+    .tweet-detail-social {
+        gap: 14px;
+    }
+
+}
+
+
+
+.home-user-greeting {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #14171a;
+    margin: 20px 0 5px;
 }

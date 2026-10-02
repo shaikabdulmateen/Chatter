@@ -1,3 +1,4 @@
+
 {% extends 'layout.html' %}
 
 {% block title %}
@@ -19,7 +20,6 @@ Chatter | Tweets
         Share your thoughts, connect with people,
         and join the conversation.
     </p>
-
 
 </section>
 
@@ -68,24 +68,205 @@ Chatter | Tweets
 
             </div>
 
+<a href="{% url 'tweet_detail' tweet.id %}" class="tweet-detail-link">
 
-            <div class="tweet-content">
+    <div class="tweet-content">
 
-                <p>
-                    {{ tweet.text }}
-                </p>
+        <p>
+            {{ tweet.text }}
+        </p>
 
-                {% if tweet.image %}
+        {% if tweet.image %}
 
-                    <img
-                        src="{{ tweet.image.url }}"
-                        alt="Tweet image"
+            <img
+                src="{{ tweet.image.url }}"
+                alt="Tweet image"
+            >
+
+        {% endif %}
+
+    </div>
+
+</a>
+
+
+            <!-- Like & Comment Count -->
+
+            <div class="tweet-social">
+
+                <form method="post" action="{% url 'like_tweet' tweet.id %}">
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        class="like-btn"
+                        aria-label="Like tweet"
                     >
 
-                {% endif %}
+                        {% if tweet.id in liked_tweet_ids %}
+                            ❤️
+                        {% else %}
+                            🤍
+                        {% endif %}
+
+                    </button>
+
+                </form>
+
+                <span class="like-count">
+                    {{ tweet.likes.count }}
+                </span>
+
+                <span class="comment-count">
+                    💬 {{ tweet.comments.count }}
+                </span>
 
             </div>
 
+
+            <!-- Comments -->
+
+            <div class="tweet-comments">
+
+                <form
+                    method="post"
+                    action="{% url 'add_comment' tweet.id %}"
+                >
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        name="text"
+                        placeholder="Write a comment..."
+                        maxlength="300"
+                        required
+                    >
+
+                    <button type="submit" class="comment-submit-btn">
+                        Comment
+                    </button>
+
+                </form>
+
+
+                <div class="comments-list">
+
+                    {% for comment in tweet.comments.all %}
+
+                        <div class="comment">
+
+                            <!-- Comment Text -->
+
+                            <div
+                                class="comment-content"
+                                id="comment-content-{{ comment.id }}"
+                            >
+
+                                <strong>
+                                    @{{ comment.user.username }}
+                                </strong>
+
+                                <span>
+                                    {{ comment.text }}
+                                </span>
+
+                            </div>
+
+
+                            {% if comment.user == request.user %}
+
+                                <!-- Edit & Delete Buttons -->
+
+                                <div
+                                    class="comment-actions"
+                                    id="comment-actions-{{ comment.id }}"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="comment-edit-trigger"
+                                        onclick="openCommentEdit({{ comment.id }})"
+                                    >
+                                        Edit
+                                    </button>
+
+
+                                    <form
+                                        method="post"
+                                        action="{% url 'delete_comment' comment.id %}"
+                                        class="comment-delete-form"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button
+                                            type="submit"
+                                            class="comment-delete-btn"
+                                        >
+                                            Delete
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+
+                                <!-- Edit Form -->
+
+                                <form
+                                    method="post"
+                                    action="{% url 'edit_comment' comment.id %}"
+                                    class="comment-edit-form"
+                                    id="edit-comment-{{ comment.id }}"
+                                    style="display: none;"
+                                >
+
+                                    {% csrf_token %}
+
+                                    <input
+                                        type="text"
+                                        name="text"
+                                        value="{{ comment.text }}"
+                                        maxlength="300"
+                                        required
+                                        class="comment-edit-input"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="comment-save-btn"
+                                    >
+                                        Save
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="comment-cancel-btn"
+                                        onclick="closeCommentEdit({{ comment.id }})"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                </form>
+
+                            {% endif %}
+
+                        </div>
+
+
+                    {% empty %}
+
+                        <p class="no-comments">
+                            No comments yet.
+                        </p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Tweet Owner Actions -->
 
             {% if tweet.user == request.user %}
 
@@ -135,4 +316,53 @@ Chatter | Tweets
 
 </div>
 
+
+<!-- Comment Edit JavaScript -->
+
+<script>
+
+function openCommentEdit(commentId) {
+
+    const content = document.getElementById(
+        "comment-content-" + commentId
+    );
+
+    const actions = document.getElementById(
+        "comment-actions-" + commentId
+    );
+
+    const editForm = document.getElementById(
+        "edit-comment-" + commentId
+    );
+
+    content.style.display = "none";
+    actions.style.display = "none";
+    editForm.style.display = "flex";
+
+}
+
+
+function closeCommentEdit(commentId) {
+
+    const content = document.getElementById(
+        "comment-content-" + commentId
+    );
+
+    const actions = document.getElementById(
+        "comment-actions-" + commentId
+    );
+
+    const editForm = document.getElementById(
+        "edit-comment-" + commentId
+    );
+
+    content.style.display = "block";
+    actions.style.display = "flex";
+    editForm.style.display = "none";
+
+}
+
+</script>
+
 {% endblock %}
+
